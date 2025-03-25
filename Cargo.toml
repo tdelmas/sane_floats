@@ -3,6 +3,10 @@ name = "sane_floats"
 version = "0.1.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
+description = "Sane implementation of floats methods"
+repository = "https://github.com/tdelmas/sane_floats"
+keywords = ["floats"]
+categories = ["mathematics"]
 
 [dependencies]
 typed_floats = "1.0.5"
