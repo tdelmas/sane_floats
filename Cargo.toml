@@ -1,0 +1,19 @@
+[package]
+name = "sane_floats"
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+typed_floats = "1.0.5"
+
+[lints.clippy]
+cargo        = { priority = -1, level = "deny" }
+complexity   = { priority = -1, level = "deny" }
+correctness  = { priority = -1, level = "deny" }
+suspicious   = { priority = -1, level = "deny" }
+style        = { priority = -1, level = "deny" }
+perf         = { priority = -1, level = "deny" }
+pedantic     = { priority = -1, level = "deny" }
+nursery      = { priority = -1, level = "deny" }
+# restriction  = { priority = -1, level = "deny" }
