@@ -1,37 +1,15 @@
-pub trait Sane {
-    type SqrtOutput;
 
-    fn sqrt(&self) -> Self::SqrtOutput;
-}
+#![warn(clippy::indexing_slicing)]
+#![warn(clippy::nursery)]
+#![warn(clippy::panic_in_result_fn)]
+#![warn(clippy::panic)]
+#![warn(clippy::pedantic)]
+#![warn(clippy::unwrap_in_result)]
+#![warn(clippy::unwrap_used)]
+#![warn(missing_docs)]
+#![warn(unsafe_op_in_unsafe_fn)]
+#![warn(unused_crate_dependencies)]
 
-impl Sane for f64 {
-    type SqrtOutput = Self;
-    
-    fn sqrt(&self) -> Self::SqrtOutput {
-        if self.is_sign_negative() {
-            Self::NAN
-        } else {
-            (*self).sqrt()
-        }
-    }
-}
+mod sqrt;
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn test_sqrt() {
-        #[allow(clippy::float_cmp)]
-        let should_be_true = 4.0_f64.sqrt() == 2.0;
-        assert!(should_be_true);
-
-        let neg_zero = -0.0_f64;
-        
-        let sqrt_std = neg_zero.sqrt();
-        assert!(sqrt_std.is_sign_negative());
-        assert!(sqrt_std == 0.0);
-
-        let sqrt_sane = crate::Sane::sqrt(&neg_zero);
-
-        assert!(sqrt_sane.is_nan());
-    }
-}
+pub use sqrt::Sqrt;

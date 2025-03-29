@@ -20,4 +20,3 @@ style        = { priority = -1, level = "deny" }
 perf         = { priority = -1, level = "deny" }
 pedantic     = { priority = -1, level = "deny" }
 nursery      = { priority = -1, level = "deny" }
-# restriction  = { priority = -1, level = "deny" }
