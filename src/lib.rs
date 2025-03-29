@@ -18,13 +18,18 @@ impl Sane for f64 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-
     #[test]
     fn test_sqrt() {
-        #[allow(clippy::float_cmp)]
-        assert_eq!(4.0.sqrt(), 2.0);
+        assert!(4.0_f64.sqrt() == 2.0);
 
-        assert!((-0.0).sqrt().is_nan());
+        let neg_zero = -0.0_f64;
+        
+        let sqrt_std = neg_zero.sqrt();
+        assert!(sqrt_std.is_sign_negative());
+        assert!(sqrt_std == 0.0);
+
+        let sqrt_sane = crate::Sane::sqrt(&neg_zero);
+
+        assert!(sqrt_sane.is_nan());
     }
 }
