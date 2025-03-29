@@ -20,7 +20,9 @@ impl Sane for f64 {
 mod tests {
     #[test]
     fn test_sqrt() {
-        assert!(4.0_f64.sqrt() == 2.0);
+        #[allow(clippy::float_cmp)]
+        let should_be_true = 4.0_f64.sqrt() == 2.0;
+        assert!(should_be_true);
 
         let neg_zero = -0.0_f64;
         
