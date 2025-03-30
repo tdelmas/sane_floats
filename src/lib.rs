@@ -1,3 +1,4 @@
+#![doc = include_str!("../README.md")]
 
 #![warn(clippy::indexing_slicing)]
 #![warn(clippy::nursery)]

@@ -1,9 +1,11 @@
-use typed_floats::{NonNaN, Positive};
-
-
+/// This trait provide a sane version of the `sqrt` function:
+/// It returns `NaN` for negative floats,, INCLUDING `-0.0`.
 pub trait Sqrt {
+    /// The output type of the `sqrt` function.
     type SqrtOutput;
 
+    /// Returns the square root of a float.
+    /// If the number is negative, it returns `NaN`.
     fn sqrt(&self) -> Self::SqrtOutput;
 }
 
@@ -19,23 +21,15 @@ impl Sqrt for f64 {
     }
 }
 
-impl Sqrt for NonNaN<f64> {
-    type SqrtOutput = f64;
-    
-    fn sqrt(&self) -> Self::SqrtOutput {
-        if self.is_sign_negative() {
-            f64::NAN
-        } else {
-            (*self).sqrt()
-        }
-    }
-}
-
-impl Sqrt for Positive<f64> {
+impl Sqrt for f32 {
     type SqrtOutput = Self;
     
     fn sqrt(&self) -> Self::SqrtOutput {
-        (*self).sqrt()
+        if self.is_sign_negative() {
+            Self::NAN
+        } else {
+            (*self).sqrt()
+        }
     }
 }
 
