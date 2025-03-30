@@ -9,7 +9,6 @@ keywords = ["floats"]
 categories = ["mathematics"]
 
 [dependencies]
-typed_floats = "1.0.5"
 
 [lints.clippy]
 cargo        = { priority = -1, level = "deny" }
